@@ -1,7 +1,7 @@
 ﻿
 namespace Ohjelmistotuotanto_Projekti
 {
-    partial class Vauraukset
+    partial class frmVaraukset
     {
         /// <summary>
         /// Required designer variable.
@@ -35,6 +35,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTyhjenna = new System.Windows.Forms.Button();
             this.btnLaske = new System.Windows.Forms.Button();
             this.rtbLasku = new System.Windows.Forms.RichTextBox();
             this.btnLisaaLasku = new System.Windows.Forms.Button();
@@ -63,8 +64,8 @@ namespace Ohjelmistotuotanto_Projekti
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dgvPalvelut = new System.Windows.Forms.DataGridView();
             this.btnPoista = new System.Windows.Forms.Button();
+            this.dgvPalvelut = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -82,7 +83,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.dtpVarattu_pvm = new System.Windows.Forms.DateTimePicker();
             this.btnPoista_varaus = new System.Windows.Forms.Button();
             this.btnPaivita_varaus = new System.Windows.Forms.Button();
-            this.btnTyhjenna = new System.Windows.Forms.Button();
+            this.btnTakaisin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVapaat)).BeginInit();
             this.panel3.SuspendLayout();
@@ -135,7 +136,7 @@ namespace Ohjelmistotuotanto_Projekti
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(519, 18);
+            this.label1.Location = new System.Drawing.Point(592, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(218, 29);
             this.label1.TabIndex = 21;
@@ -145,7 +146,6 @@ namespace Ohjelmistotuotanto_Projekti
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.LightGray;
-            this.panel1.Controls.Add(this.btnTyhjenna);
             this.panel1.Controls.Add(this.btnLaske);
             this.panel1.Controls.Add(this.rtbLasku);
             this.panel1.Controls.Add(this.btnLisaaLasku);
@@ -156,11 +156,21 @@ namespace Ohjelmistotuotanto_Projekti
             this.panel1.Controls.Add(this.label22);
             this.panel1.Controls.Add(this.tbSumma);
             this.panel1.Controls.Add(this.label23);
-            this.panel1.Location = new System.Drawing.Point(764, 622);
+            this.panel1.Location = new System.Drawing.Point(670, 622);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(695, 282);
+            this.panel1.Size = new System.Drawing.Size(789, 282);
             this.panel1.TabIndex = 56;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnTyhjenna
+            // 
+            this.btnTyhjenna.Location = new System.Drawing.Point(202, 18);
+            this.btnTyhjenna.Name = "btnTyhjenna";
+            this.btnTyhjenna.Size = new System.Drawing.Size(155, 36);
+            this.btnTyhjenna.TabIndex = 74;
+            this.btnTyhjenna.Text = "Tyhjennä tekstikentät";
+            this.btnTyhjenna.UseVisualStyleBackColor = true;
+            this.btnTyhjenna.Click += new System.EventHandler(this.btnTyhjenna_Click);
             // 
             // btnLaske
             // 
@@ -341,6 +351,8 @@ namespace Ohjelmistotuotanto_Projekti
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel4.Controls.Add(this.btnTyhjenna);
+            this.panel4.Controls.Add(this.btnTakaisin);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -351,7 +363,7 @@ namespace Ohjelmistotuotanto_Projekti
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(409, 71);
+            this.label13.Location = new System.Drawing.Point(365, 73);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 17);
             this.label13.TabIndex = 59;
@@ -359,7 +371,7 @@ namespace Ohjelmistotuotanto_Projekti
             // 
             // btnLisaaVarauksenPalvelu
             // 
-            this.btnLisaaVarauksenPalvelu.Location = new System.Drawing.Point(476, 133);
+            this.btnLisaaVarauksenPalvelu.Location = new System.Drawing.Point(368, 119);
             this.btnLisaaVarauksenPalvelu.Name = "btnLisaaVarauksenPalvelu";
             this.btnLisaaVarauksenPalvelu.Size = new System.Drawing.Size(75, 23);
             this.btnLisaaVarauksenPalvelu.TabIndex = 62;
@@ -369,17 +381,17 @@ namespace Ohjelmistotuotanto_Projekti
             // 
             // tbPalveluID
             // 
-            this.tbPalveluID.Location = new System.Drawing.Point(536, 68);
+            this.tbPalveluID.Location = new System.Drawing.Point(486, 71);
             this.tbPalveluID.Name = "tbPalveluID";
-            this.tbPalveluID.Size = new System.Drawing.Size(160, 22);
+            this.tbPalveluID.Size = new System.Drawing.Size(126, 22);
             this.tbPalveluID.TabIndex = 61;
             // 
             // cbPalvelut
             // 
             this.cbPalvelut.FormattingEnabled = true;
-            this.cbPalvelut.Location = new System.Drawing.Point(176, 68);
+            this.cbPalvelut.Location = new System.Drawing.Point(176, 71);
             this.cbPalvelut.Name = "cbPalvelut";
-            this.cbPalvelut.Size = new System.Drawing.Size(160, 24);
+            this.cbPalvelut.Size = new System.Drawing.Size(126, 24);
             this.cbPalvelut.TabIndex = 57;
             this.cbPalvelut.SelectedIndexChanged += new System.EventHandler(this.cbPalvelut_SelectedIndexChanged_1);
             // 
@@ -396,7 +408,7 @@ namespace Ohjelmistotuotanto_Projekti
             // 
             this.nudLkm.Location = new System.Drawing.Point(176, 120);
             this.nudLkm.Name = "nudLkm";
-            this.nudLkm.Size = new System.Drawing.Size(160, 22);
+            this.nudLkm.Size = new System.Drawing.Size(126, 22);
             this.nudLkm.TabIndex = 63;
             // 
             // label14
@@ -433,24 +445,12 @@ namespace Ohjelmistotuotanto_Projekti
             this.panel2.Controls.Add(this.label13);
             this.panel2.Location = new System.Drawing.Point(15, 622);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(743, 282);
+            this.panel2.Size = new System.Drawing.Size(649, 282);
             this.panel2.TabIndex = 57;
-            // 
-            // dgvPalvelut
-            // 
-            this.dgvPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPalvelut.Location = new System.Drawing.Point(27, 175);
-            this.dgvPalvelut.Name = "dgvPalvelut";
-            this.dgvPalvelut.RowHeadersWidth = 51;
-            this.dgvPalvelut.RowTemplate.Height = 24;
-            this.dgvPalvelut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPalvelut.Size = new System.Drawing.Size(669, 81);
-            this.dgvPalvelut.TabIndex = 64;
-            this.dgvPalvelut.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvPalvelut_MouseClick);
             // 
             // btnPoista
             // 
-            this.btnPoista.Location = new System.Drawing.Point(621, 131);
+            this.btnPoista.Location = new System.Drawing.Point(537, 118);
             this.btnPoista.Name = "btnPoista";
             this.btnPoista.Size = new System.Drawing.Size(75, 25);
             this.btnPoista.TabIndex = 65;
@@ -458,8 +458,21 @@ namespace Ohjelmistotuotanto_Projekti
             this.btnPoista.UseVisualStyleBackColor = true;
             this.btnPoista.Click += new System.EventHandler(this.btnPoista_Click);
             // 
+            // dgvPalvelut
+            // 
+            this.dgvPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPalvelut.Location = new System.Drawing.Point(31, 170);
+            this.dgvPalvelut.Name = "dgvPalvelut";
+            this.dgvPalvelut.RowHeadersWidth = 51;
+            this.dgvPalvelut.RowTemplate.Height = 24;
+            this.dgvPalvelut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPalvelut.Size = new System.Drawing.Size(581, 81);
+            this.dgvPalvelut.TabIndex = 64;
+            this.dgvPalvelut.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvPalvelut_MouseClick);
+            // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.LightGray;
             this.panel5.Controls.Add(this.label17);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.label6);
@@ -626,17 +639,17 @@ namespace Ohjelmistotuotanto_Projekti
             this.btnPaivita_varaus.UseVisualStyleBackColor = true;
             this.btnPaivita_varaus.Click += new System.EventHandler(this.btnPaivita_varaus_Click);
             // 
-            // btnTyhjenna
+            // btnTakaisin
             // 
-            this.btnTyhjenna.Location = new System.Drawing.Point(319, 22);
-            this.btnTyhjenna.Name = "btnTyhjenna";
-            this.btnTyhjenna.Size = new System.Drawing.Size(212, 23);
-            this.btnTyhjenna.TabIndex = 74;
-            this.btnTyhjenna.Text = "Tyhjennä tekstikentät";
-            this.btnTyhjenna.UseVisualStyleBackColor = true;
-            this.btnTyhjenna.Click += new System.EventHandler(this.btnTyhjenna_Click);
+            this.btnTakaisin.Location = new System.Drawing.Point(24, 18);
+            this.btnTakaisin.Name = "btnTakaisin";
+            this.btnTakaisin.Size = new System.Drawing.Size(155, 36);
+            this.btnTakaisin.TabIndex = 57;
+            this.btnTakaisin.Text = "Takaisin";
+            this.btnTakaisin.UseVisualStyleBackColor = true;
+            this.btnTakaisin.Click += new System.EventHandler(this.btnTakaisin_Click);
             // 
-            // Vauraukset
+            // frmVaraukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -646,10 +659,10 @@ namespace Ohjelmistotuotanto_Projekti
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Vauraukset";
+            this.MinimumSize = new System.Drawing.Size(1498, 963);
+            this.Name = "frmVaraukset";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Varaukset";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Vauraukset_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -725,5 +738,6 @@ namespace Ohjelmistotuotanto_Projekti
         private System.Windows.Forms.Button btnPoista_varaus;
         private System.Windows.Forms.Button btnPaivita_varaus;
         private System.Windows.Forms.Button btnTyhjenna;
+        private System.Windows.Forms.Button btnTakaisin;
     }
 }

@@ -19,7 +19,7 @@ namespace Ohjelmistotuotanto_Projekti
             InitializeComponent();
         }
 
-        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=Ruutti");
+        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=ruutti");
         MySqlCommand command;
 
         private void frmAlueet_Load(object sender, EventArgs e)

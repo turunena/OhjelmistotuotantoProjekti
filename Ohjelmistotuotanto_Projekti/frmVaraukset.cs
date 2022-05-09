@@ -23,13 +23,13 @@ using System.IO;
 
 namespace Ohjelmistotuotanto_Projekti
 {
-    public partial class Vauraukset : Form
+    public partial class frmVaraukset : Form
     {
-        public Vauraukset()
+        public frmVaraukset()
         {
             InitializeComponent();
         }
-        MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=ruutti;Allow User Variables=True");
+        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=ruutti;Allow User Variables=True");
         MySqlCommand command;
 
         private void Vauraukset_Load(object sender, EventArgs e)
@@ -468,6 +468,14 @@ namespace Ohjelmistotuotanto_Projekti
             dtpVarattu_pvm.Value = DateTime.Today;
             dtpVarauksen_alkupvm.Value = DateTime.Today;
             dtpVarauksen_loppupvm.Value = DateTime.Today;
+        }
+
+        private void btnTakaisin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmValikko valikko = new frmValikko();
+            valikko.ShowDialog();
+            this.Close();
         }
     }
 }

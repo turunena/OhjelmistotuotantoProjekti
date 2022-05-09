@@ -37,5 +37,29 @@ namespace Ohjelmistotuotanto_Projekti
             mokit.ShowDialog();
             this.Close();
         }
+
+        private void btnMajoitus_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmVaraukset varaukset = new frmVaraukset();
+            varaukset.ShowDialog();
+            this.Close();
+        }
+
+        private void btnRaportointi_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmMajoitusRaportti mRapsa = new frmMajoitusRaportti();
+            mRapsa.ShowDialog();
+            this.Close();
+        }
+
+        private void btnRaportointiPalvelut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPalveluidenRaportointi pRapsa = new frmPalveluidenRaportointi();
+            pRapsa.ShowDialog();
+            this.Close();
+        }
     }
 }
