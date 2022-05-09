@@ -16,7 +16,7 @@ namespace Ohjelmistotuotanto_Projekti
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Vauraukset());
+            Application.Run(new frmValikko());
         }
     }
 }
