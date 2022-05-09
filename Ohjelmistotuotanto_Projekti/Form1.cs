@@ -19,7 +19,7 @@ namespace Ohjelmistotuotanto_Projekti
             InitializeComponent();
         }
 
-        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=Ruutti");
+        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=ruutti");
         MySqlCommand command;
 
 
@@ -133,6 +133,11 @@ namespace Ohjelmistotuotanto_Projekti
             string deleteQuery = "DELETE FROM mokki WHERE mokki_id = " + int.Parse(tbMokkiID.Text);
             ExecuteMyQuery(deleteQuery);
             populateDGV();
+        }
+
+        private void tbToiminta_AlueNimi_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
