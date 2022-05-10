@@ -14,6 +14,10 @@ using System.Configuration;
 using System.Web.Configuration;
 using Microsoft.Build.Framework.XamlTypes;
 using System.IO;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 //form ja funktiot
 //mökkien haku
@@ -35,29 +39,7 @@ namespace Ohjelmistotuotanto_Projekti
         private void Vauraukset_Load(object sender, EventArgs e)
         {
             populateDGV();
-            populateDGV2();
-            populateCB();
-        }
 
-        public void populateDGV()
-        {
-            string query = "SELECT * FROM varaus";
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-            adapter.Fill(table);
-            dgvVaraukset.DataSource = table;
-        }
-
-        public void populateDGV2()
-        {
-            string query = "SELECT * FROM varauksen_palvelut";
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-            adapter.Fill(table);
-            dgvPalvelut.DataSource = table;
-        }
-        public void populateCB()
-        {
             //haetaan alueet tietokannasta combobox:iin
             OpenConnection();
             MySqlDataReader mdr1;
@@ -77,6 +59,15 @@ namespace Ohjelmistotuotanto_Projekti
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             adapter.Fill(table);
             dgvAsiakasTiedot.DataSource = table;
+        }
+
+        public void populateDGV()
+        {
+            string query = "SELECT * FROM varaus";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+            adapter.Fill(table);
+            dgvVaraukset.DataSource = table;
         }
 
         public void ExecuteMyQuery(string query)
@@ -151,8 +142,8 @@ namespace Ohjelmistotuotanto_Projekti
         private void btnEtsiMokit_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=ruutti");
-            using (command = new MySqlCommand("SELECT m.mokki_id, m.alue_id, m.mokkinimi, m.kuvaus" +
-                " FROM mokki m INNER JOIN alue a ON m.alue_id = a.alue_id AND a.nimi = @Vali" +
+            using (command = new MySqlCommand("SELECT m.mokkinimi, m.mokki_id, m.alue_id, m.kuvaus, m.varustelu, m.hinta " +
+                " FROM mokki m INNER JOIN alue a ON m.hinta > @Vhinta AND m.hinta < @Ehinta AND m.alue_id = a.alue_id AND a.nimi = @Alue" +
                 " WHERE NOT EXISTS" +
                 " (SELECT * FROM varaus v WHERE m.mokki_id = v.mokki_mokki_id AND" +
                 " v.varattu_alkupvm <= @Loppu AND v.varattu_loppupvm >= @Alku)", conn))
@@ -162,7 +153,9 @@ namespace Ohjelmistotuotanto_Projekti
 
                     
                     OpenConnection();
-                    command.Parameters.AddWithValue("@Vali", cbAlue2.Text);
+                    command.Parameters.AddWithValue("@Alue", cbAlue2.Text);
+                    command.Parameters.AddWithValue("@Vhinta", tbVahintaan.Text);
+                    command.Parameters.AddWithValue("@Ehinta", tbEnintaan.Text);
                     command.Parameters.AddWithValue("@Alku", dtpVarauksen_alkupvm.Text);
                     command.Parameters.AddWithValue("@Loppu", dtpVarauksen_loppupvm.Text);
 
@@ -179,7 +172,7 @@ namespace Ohjelmistotuotanto_Projekti
                     }
                     if (dgvVapaat.Rows.Count == 1)
                     {
-                        MessageBox.Show("Ei vapaita mökkejä paikassa " + cbAlue2.Text + "\n" + dtpVarauksen_alkupvm.Text + " - " + dtpVarauksen_loppupvm.Text + " aikana");
+                        MessageBox.Show("Ei vapaita mökkejä valituilla ehdoilla " + "\n" + "paikassa " + cbAlue2.Text);
                     }
                 }              
             }
@@ -188,7 +181,7 @@ namespace Ohjelmistotuotanto_Projekti
         //vie mokki id:n varausten hallintaan
         private void dgvVapaat_MouseClick(object sender, MouseEventArgs e)
         {
-            tbMokki_ID.Text = dgvVapaat.CurrentRow.Cells[0].Value.ToString();
+            tbMokki_ID.Text = dgvVapaat.CurrentRow.Cells[1].Value.ToString();
         }
 
         //asiakkaat
@@ -327,7 +320,6 @@ namespace Ohjelmistotuotanto_Projekti
                 int varausID = int.Parse(tbVaraus_ID.Text);
                 string insertQuery = "insert into varauksen_palvelut(varaus_id, palvelu_id, lkm) values(" + varausID + ",'" + tbPalveluID.Text + "','" + nudLkm.Text + "')";
                 ExecuteMyQuery(insertQuery);
-                populateDGV2();
 
                 //haetaan palvelut ja lasketaan niiden hinnat
                 OpenConnection();
@@ -401,14 +393,12 @@ namespace Ohjelmistotuotanto_Projekti
 
                 rtbLasku.Text += Environment.NewLine + "Kokonais kustannukset: " + mdr2["kokonaishinta"];
                 rtbLasku.Text += Environment.NewLine + " ";
-                // tbSumma.Text = Convert.ToString(mdr2["kokonaishinta"]);
-
                 tbSumma.Text = Convert.ToString(mdr2["kokonaishinta"]);
             }
             CloseConnection();
         }
 
-        //ei toimi
+        //lisää laskun tietokantaan
         private void btnLisaaLasku_Click(object sender, EventArgs e)
         {
             try
@@ -424,32 +414,6 @@ namespace Ohjelmistotuotanto_Projekti
             }
         }
 
-        //ei toimi
-        private void btnPoista_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // OpenConnection();
-                int rowIndex = dgvPalvelut.CurrentCell.RowIndex;
-                dgvPalvelut.Rows.RemoveAt(rowIndex);
-                //populateDGV();
-                // CloseConnection();
-            }
-            catch
-            {
-                MessageBox.Show("lol");
-            }
-        }
-
-
-        private void dgvPalvelut_MouseClick(object sender, MouseEventArgs e)
-        {
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btnTyhjenna_Click(object sender, EventArgs e)
         {
@@ -462,6 +426,8 @@ namespace Ohjelmistotuotanto_Projekti
             tbPalveluID.Text = " ";
             tbSumma.Text = " ";
             tbVaraus_ID.Text = " ";
+            tbVahintaan.Text = " ";
+            tbEnintaan.Text = " ";
             nudLkm.Text = "0";
             rtbLasku.Text = " ";
             dtpVahvistus_pvm.Value = DateTime.Today;

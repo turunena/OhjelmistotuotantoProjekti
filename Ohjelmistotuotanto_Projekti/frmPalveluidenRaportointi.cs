@@ -50,6 +50,8 @@ namespace Ohjelmistotuotanto_Projekti
                 connection.Close();
             }
         }
+
+        //Etsii halutuilla vaihtoehdoilla
         private void btnEtsi_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=ruutti");
@@ -95,6 +97,19 @@ namespace Ohjelmistotuotanto_Projekti
             this.Close();
         }
 
-       
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNaytaKaikki_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT vp.varaus_id, vp.palvelu_id, vp.lkm, v.asiakas_id FROM varauksen_palvelut vp" +
+                " INNER JOIN varaus v ON vp.varaus_id = v.varaus_id";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+            adapter.Fill(table);
+            dgvRaporttip.DataSource = table;
+        }
     }
 }
