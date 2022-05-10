@@ -49,19 +49,10 @@ namespace Ohjelmistotuotanto_Projekti
         private void btnRaportointi_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmMajoitusRaportti mRapsa = new frmMajoitusRaportti();
-            mRapsa.ShowDialog();
-            this.Close();
-        }
-
-        private void btnRaportointiPalvelut_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmPalveluidenRaportointi pRapsa = new frmPalveluidenRaportointi();
+            frmRaportointi pRapsa = new frmRaportointi();
             pRapsa.ShowDialog();
             this.Close();
         }
-
         private void btnPalvelut_Click(object sender, EventArgs e)
         {
             this.Hide();

@@ -18,7 +18,7 @@ namespace Ohjelmistotuotanto_Projekti
         {
             InitializeComponent();
         } // Tähän muutetaan salasana, jos se on erilainen sinun tietokannassasi.
-        MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=rootti");
+        MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=ruutti");
         MySqlCommand command;
         private void frmPalvelut_Load(object sender, EventArgs e)
         { // Formin lautuessa datagrideihin haetaan tietokannasta tiedot

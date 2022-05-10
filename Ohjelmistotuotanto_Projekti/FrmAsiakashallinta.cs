@@ -17,7 +17,7 @@ namespace Ohjelmistotuotanto_Projekti
     {
         bool bOnnistui;//tämä boolean on varattuna tekstikenttien tarkistuksiin
         MySqlCommand command;
-        MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=Ruutti");
+        MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=ruutti");
 
         //funktio joka avaa tietokantayhteyden suorittaakseen kyselyn
         public void OpenConnection()

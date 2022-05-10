@@ -36,7 +36,7 @@ namespace Ohjelmistotuotanto_Projekti
         MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=ruutti;Allow User Variables=True");
         MySqlCommand command;
 
-        private void Vauraukset_Load(object sender, EventArgs e)
+        private void frmVaraukset_Load(object sender, EventArgs e)
         {
             populateDGV();
 
@@ -443,5 +443,7 @@ namespace Ohjelmistotuotanto_Projekti
             valikko.ShowDialog();
             this.Close();
         }
+
+        
     }
 }
