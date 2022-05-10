@@ -61,5 +61,13 @@ namespace Ohjelmistotuotanto_Projekti
             pRapsa.ShowDialog();
             this.Close();
         }
+
+        private void btnPalvelut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPalvelut palvelut = new frmPalvelut();
+            palvelut.ShowDialog();
+            this.Close();
+        }
     }
 }
