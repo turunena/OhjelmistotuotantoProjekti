@@ -69,5 +69,13 @@ namespace Ohjelmistotuotanto_Projekti
             palvelut.ShowDialog();
             this.Close();
         }
+
+        private void btnAsiakkaat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmAsiakashallinta asiakasHallinta = new FrmAsiakashallinta();
+            asiakasHallinta.ShowDialog();
+            this.Close();
+        }
     }
 }

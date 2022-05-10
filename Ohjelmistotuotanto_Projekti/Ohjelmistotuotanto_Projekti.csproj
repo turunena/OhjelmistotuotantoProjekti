@@ -117,6 +117,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Alue_ja_MokkiDataset.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmAsiakashallinta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAsiakashallinta.designer.cs">
+      <DependentUpon>FrmAsiakashallinta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPalvelut.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
     </Compile>
     <EmbeddedResource Include="frmAlueet.resx">
       <DependentUpon>frmAlueet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAsiakashallinta.resx">
+      <DependentUpon>FrmAsiakashallinta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMajoitusRaportti.resx">
       <DependentUpon>frmMajoitusRaportti.cs</DependentUpon>

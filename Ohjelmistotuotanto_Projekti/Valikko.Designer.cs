@@ -61,7 +61,7 @@ namespace Ohjelmistotuotanto_Projekti
             // btnRaportointiPalvelut
             // 
             this.btnRaportointiPalvelut.Location = new System.Drawing.Point(563, 336);
-            this.btnRaportointiPalvelut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRaportointiPalvelut.Margin = new System.Windows.Forms.Padding(2);
             this.btnRaportointiPalvelut.Name = "btnRaportointiPalvelut";
             this.btnRaportointiPalvelut.Size = new System.Drawing.Size(174, 68);
             this.btnRaportointiPalvelut.TabIndex = 52;
@@ -100,6 +100,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.btnAsiakkaat.TabIndex = 49;
             this.btnAsiakkaat.Text = "Asiakkaiden hallinta";
             this.btnAsiakkaat.UseVisualStyleBackColor = true;
+            this.btnAsiakkaat.Click += new System.EventHandler(this.btnAsiakkaat_Click);
             // 
             // btnMajoitus
             // 
