@@ -18,7 +18,7 @@ namespace Ohjelmistotuotanto_Projekti
         {
             InitializeComponent();
         } // Tähän muutetaan salasana, jos se on erilainen sinun tietokannassasi.
-        MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=ruutti");
+        MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=Ruutti");
         MySqlCommand command;
         private void frmPalvelut_Load(object sender, EventArgs e)
         { // Formin lautuessa datagrideihin haetaan tietokannasta tiedot
@@ -165,6 +165,14 @@ namespace Ohjelmistotuotanto_Projekti
         { // Lisätään tiedot tekstikenttiin klikkaamalla haluttua riviä
             textBox8.Text = dataGridView2.CurrentRow.Cells[0].Value.ToString();
             textBox9.Text = dataGridView2.CurrentRow.Cells[1].Value.ToString();
+        }
+
+        private void btnTakaisin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmValikko valikko = new frmValikko();
+            valikko.ShowDialog();
+            this.Close();
         }
     }
 }

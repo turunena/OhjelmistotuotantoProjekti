@@ -57,6 +57,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnTakaisin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -301,11 +302,22 @@ namespace Ohjelmistotuotanto_Projekti
             this.dataGridView1.Size = new System.Drawing.Size(743, 281);
             this.dataGridView1.TabIndex = 52;
             // 
+            // btnTakaisin
+            // 
+            this.btnTakaisin.Location = new System.Drawing.Point(254, 715);
+            this.btnTakaisin.Name = "btnTakaisin";
+            this.btnTakaisin.Size = new System.Drawing.Size(75, 23);
+            this.btnTakaisin.TabIndex = 80;
+            this.btnTakaisin.Text = "Takaisin";
+            this.btnTakaisin.UseVisualStyleBackColor = true;
+            this.btnTakaisin.Click += new System.EventHandler(this.btnTakaisin_Click);
+            // 
             // frmPalvelut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 748);
+            this.Controls.Add(this.btnTakaisin);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -374,5 +386,6 @@ namespace Ohjelmistotuotanto_Projekti
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnTakaisin;
     }
 }

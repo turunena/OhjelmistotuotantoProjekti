@@ -123,6 +123,12 @@
     <Compile Include="FrmAsiakashallinta.designer.cs">
       <DependentUpon>FrmAsiakashallinta.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLaskut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLaskut.Designer.cs">
+      <DependentUpon>frmLaskut.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPalvelut.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAsiakashallinta.resx">
       <DependentUpon>FrmAsiakashallinta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLaskut.resx">
+      <DependentUpon>frmLaskut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMajoitusRaportti.resx">
       <DependentUpon>frmMajoitusRaportti.cs</DependentUpon>

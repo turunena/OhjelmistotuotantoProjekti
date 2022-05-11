@@ -17,7 +17,7 @@ namespace Ohjelmistotuotanto_Projekti
         {
             InitializeComponent();
         }
-        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=ruutti;Allow User Variables=True");
+        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=Ruutti;Allow User Variables=True");
         MySqlCommand command;
 
         private void frmMajoitusRaportti_Load(object sender, EventArgs e)

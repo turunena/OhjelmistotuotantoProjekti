@@ -38,11 +38,13 @@ namespace Ohjelmistotuotanto_Projekti
             this.btnMokit = new System.Windows.Forms.Button();
             this.btnAlueet = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnLaskut = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnLaskut);
             this.panel1.Controls.Add(this.btnPoistu);
             this.panel1.Controls.Add(this.btnRaportointiMajoitus);
             this.panel1.Controls.Add(this.btnAsiakkaat);
@@ -51,19 +53,17 @@ namespace Ohjelmistotuotanto_Projekti
             this.panel1.Controls.Add(this.btnMokit);
             this.panel1.Controls.Add(this.btnAlueet);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(17, 16);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1033, 523);
+            this.panel1.Size = new System.Drawing.Size(775, 425);
             this.panel1.TabIndex = 0;
             // 
             // btnPoistu
             // 
             this.btnPoistu.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPoistu.Location = new System.Drawing.Point(337, 446);
-            this.btnPoistu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPoistu.Location = new System.Drawing.Point(372, 329);
             this.btnPoistu.Name = "btnPoistu";
-            this.btnPoistu.Size = new System.Drawing.Size(335, 52);
+            this.btnPoistu.Size = new System.Drawing.Size(376, 70);
             this.btnPoistu.TabIndex = 51;
             this.btnPoistu.Text = "Poistu";
             this.btnPoistu.UseVisualStyleBackColor = true;
@@ -72,10 +72,9 @@ namespace Ohjelmistotuotanto_Projekti
             // btnRaportointiMajoitus
             // 
             this.btnRaportointiMajoitus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRaportointiMajoitus.Location = new System.Drawing.Point(496, 289);
-            this.btnRaportointiMajoitus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRaportointiMajoitus.Location = new System.Drawing.Point(372, 235);
             this.btnRaportointiMajoitus.Name = "btnRaportointiMajoitus";
-            this.btnRaportointiMajoitus.Size = new System.Drawing.Size(501, 108);
+            this.btnRaportointiMajoitus.Size = new System.Drawing.Size(376, 88);
             this.btnRaportointiMajoitus.TabIndex = 50;
             this.btnRaportointiMajoitus.Text = "Raportointi";
             this.btnRaportointiMajoitus.UseVisualStyleBackColor = true;
@@ -84,10 +83,9 @@ namespace Ohjelmistotuotanto_Projekti
             // btnAsiakkaat
             // 
             this.btnAsiakkaat.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAsiakkaat.Location = new System.Drawing.Point(40, 289);
-            this.btnAsiakkaat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAsiakkaat.Location = new System.Drawing.Point(30, 235);
             this.btnAsiakkaat.Name = "btnAsiakkaat";
-            this.btnAsiakkaat.Size = new System.Drawing.Size(448, 108);
+            this.btnAsiakkaat.Size = new System.Drawing.Size(336, 88);
             this.btnAsiakkaat.TabIndex = 49;
             this.btnAsiakkaat.Text = "Asiakkaiden hallinta";
             this.btnAsiakkaat.UseVisualStyleBackColor = true;
@@ -96,10 +94,9 @@ namespace Ohjelmistotuotanto_Projekti
             // btnMajoitus
             // 
             this.btnMajoitus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMajoitus.Location = new System.Drawing.Point(496, 182);
-            this.btnMajoitus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMajoitus.Location = new System.Drawing.Point(372, 148);
             this.btnMajoitus.Name = "btnMajoitus";
-            this.btnMajoitus.Size = new System.Drawing.Size(501, 100);
+            this.btnMajoitus.Size = new System.Drawing.Size(376, 81);
             this.btnMajoitus.TabIndex = 48;
             this.btnMajoitus.Text = "Majoitusvarausten hallinta";
             this.btnMajoitus.UseVisualStyleBackColor = true;
@@ -108,10 +105,9 @@ namespace Ohjelmistotuotanto_Projekti
             // btnPalvelut
             // 
             this.btnPalvelut.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPalvelut.Location = new System.Drawing.Point(40, 182);
-            this.btnPalvelut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPalvelut.Location = new System.Drawing.Point(30, 148);
             this.btnPalvelut.Name = "btnPalvelut";
-            this.btnPalvelut.Size = new System.Drawing.Size(448, 100);
+            this.btnPalvelut.Size = new System.Drawing.Size(336, 81);
             this.btnPalvelut.TabIndex = 47;
             this.btnPalvelut.Text = "Palveluiden hallinta";
             this.btnPalvelut.UseVisualStyleBackColor = true;
@@ -120,10 +116,9 @@ namespace Ohjelmistotuotanto_Projekti
             // btnMokit
             // 
             this.btnMokit.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMokit.Location = new System.Drawing.Point(496, 71);
-            this.btnMokit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMokit.Location = new System.Drawing.Point(372, 58);
             this.btnMokit.Name = "btnMokit";
-            this.btnMokit.Size = new System.Drawing.Size(501, 103);
+            this.btnMokit.Size = new System.Drawing.Size(376, 84);
             this.btnMokit.TabIndex = 46;
             this.btnMokit.Text = "Mökkien hallinta";
             this.btnMokit.UseVisualStyleBackColor = true;
@@ -132,10 +127,9 @@ namespace Ohjelmistotuotanto_Projekti
             // btnAlueet
             // 
             this.btnAlueet.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlueet.Location = new System.Drawing.Point(40, 71);
-            this.btnAlueet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAlueet.Location = new System.Drawing.Point(30, 58);
             this.btnAlueet.Name = "btnAlueet";
-            this.btnAlueet.Size = new System.Drawing.Size(448, 103);
+            this.btnAlueet.Size = new System.Drawing.Size(336, 84);
             this.btnAlueet.TabIndex = 45;
             this.btnAlueet.Text = "Alueiden hallinta";
             this.btnAlueet.UseVisualStyleBackColor = true;
@@ -145,20 +139,29 @@ namespace Ohjelmistotuotanto_Projekti
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(425, 12);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(319, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 31);
+            this.label3.Size = new System.Drawing.Size(90, 26);
             this.label3.TabIndex = 39;
             this.label3.Text = "Valikko";
             // 
+            // btnLaskut
+            // 
+            this.btnLaskut.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLaskut.Location = new System.Drawing.Point(33, 329);
+            this.btnLaskut.Name = "btnLaskut";
+            this.btnLaskut.Size = new System.Drawing.Size(333, 70);
+            this.btnLaskut.TabIndex = 52;
+            this.btnLaskut.Text = "Laskujen hallinta";
+            this.btnLaskut.UseVisualStyleBackColor = true;
+            this.btnLaskut.Click += new System.EventHandler(this.btnLaskut_Click);
+            // 
             // frmValikko
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmValikko";
             this.Text = "Mökkivarausohjelma";
             this.panel1.ResumeLayout(false);
@@ -178,5 +181,6 @@ namespace Ohjelmistotuotanto_Projekti
         private System.Windows.Forms.Button btnPalvelut;
         private System.Windows.Forms.Button btnMokit;
         private System.Windows.Forms.Button btnAlueet;
+        private System.Windows.Forms.Button btnLaskut;
     }
 }

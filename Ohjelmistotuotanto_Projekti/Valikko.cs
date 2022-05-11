@@ -68,5 +68,13 @@ namespace Ohjelmistotuotanto_Projekti
             asiakasHallinta.ShowDialog();
             this.Close();
         }
+
+        private void btnLaskut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmLaskut laskujenHallinta = new frmLaskut();
+            laskujenHallinta.ShowDialog();
+            this.Close();
+        }
     }
 }
