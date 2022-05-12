@@ -173,14 +173,14 @@ namespace Ohjelmistotuotanto_Projekti
             this.tbEnintaan.Location = new System.Drawing.Point(225, 134);
             this.tbEnintaan.Name = "tbEnintaan";
             this.tbEnintaan.Size = new System.Drawing.Size(161, 22);
-            this.tbEnintaan.TabIndex = 87;
+            this.tbEnintaan.TabIndex = 2;
             // 
             // tbVahintaan
             // 
             this.tbVahintaan.Location = new System.Drawing.Point(42, 134);
             this.tbVahintaan.Name = "tbVahintaan";
             this.tbVahintaan.Size = new System.Drawing.Size(161, 22);
-            this.tbVahintaan.TabIndex = 86;
+            this.tbVahintaan.TabIndex = 1;
             // 
             // label12
             // 
@@ -198,7 +198,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.dtpVarauksen_alkupvm.Location = new System.Drawing.Point(40, 201);
             this.dtpVarauksen_alkupvm.Name = "dtpVarauksen_alkupvm";
             this.dtpVarauksen_alkupvm.Size = new System.Drawing.Size(163, 22);
-            this.dtpVarauksen_alkupvm.TabIndex = 77;
+            this.dtpVarauksen_alkupvm.TabIndex = 3;
             // 
             // dgvVapaat
             // 
@@ -208,7 +208,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.dgvVapaat.RowHeadersWidth = 51;
             this.dgvVapaat.RowTemplate.Height = 24;
             this.dgvVapaat.Size = new System.Drawing.Size(489, 180);
-            this.dgvVapaat.TabIndex = 81;
+            this.dgvVapaat.TabIndex = 6;
             this.dgvVapaat.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvVapaat_MouseClick);
             // 
             // dtpVarauksen_loppupvm
@@ -218,14 +218,14 @@ namespace Ohjelmistotuotanto_Projekti
             this.dtpVarauksen_loppupvm.Location = new System.Drawing.Point(223, 201);
             this.dtpVarauksen_loppupvm.Name = "dtpVarauksen_loppupvm";
             this.dtpVarauksen_loppupvm.Size = new System.Drawing.Size(163, 22);
-            this.dtpVarauksen_loppupvm.TabIndex = 78;
+            this.dtpVarauksen_loppupvm.TabIndex = 4;
             // 
             // btnEtsiMokit
             // 
             this.btnEtsiMokit.Location = new System.Drawing.Point(444, 196);
             this.btnEtsiMokit.Name = "btnEtsiMokit";
             this.btnEtsiMokit.Size = new System.Drawing.Size(116, 27);
-            this.btnEtsiMokit.TabIndex = 82;
+            this.btnEtsiMokit.TabIndex = 5;
             this.btnEtsiMokit.Text = "Etsi";
             this.btnEtsiMokit.UseVisualStyleBackColor = true;
             this.btnEtsiMokit.Click += new System.EventHandler(this.btnEtsiMokit_Click);
@@ -236,7 +236,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.cbAlue2.Location = new System.Drawing.Point(42, 63);
             this.cbAlue2.Name = "cbAlue2";
             this.cbAlue2.Size = new System.Drawing.Size(163, 24);
-            this.cbAlue2.TabIndex = 80;
+            this.cbAlue2.TabIndex = 0;
             this.cbAlue2.SelectedIndexChanged += new System.EventHandler(this.cbAlue2_SelectedIndexChanged);
             // 
             // label164
@@ -274,7 +274,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.dgvAsiakasTiedot.RowHeadersWidth = 51;
             this.dgvAsiakasTiedot.RowTemplate.Height = 24;
             this.dgvAsiakasTiedot.Size = new System.Drawing.Size(290, 180);
-            this.dgvAsiakasTiedot.TabIndex = 74;
+            this.dgvAsiakasTiedot.TabIndex = 0;
             this.dgvAsiakasTiedot.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvAsiakasTiedot_MouseClick);
             // 
             // groupBox2
@@ -336,7 +336,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.dtpVahvistus_pvm.Location = new System.Drawing.Point(304, 185);
             this.dtpVahvistus_pvm.Name = "dtpVahvistus_pvm";
             this.dtpVahvistus_pvm.Size = new System.Drawing.Size(193, 22);
-            this.dtpVahvistus_pvm.TabIndex = 67;
+            this.dtpVahvistus_pvm.TabIndex = 5;
             // 
             // dgvVaraukset
             // 
@@ -346,7 +346,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.dgvVaraukset.RowHeadersWidth = 51;
             this.dgvVaraukset.RowTemplate.Height = 24;
             this.dgvVaraukset.Size = new System.Drawing.Size(829, 223);
-            this.dgvVaraukset.TabIndex = 57;
+            this.dgvVaraukset.TabIndex = 9;
             this.dgvVaraukset.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvVaraukset_MouseClick);
             // 
             // btnEtsi
@@ -354,7 +354,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.btnEtsi.Location = new System.Drawing.Point(304, 56);
             this.btnEtsi.Name = "btnEtsi";
             this.btnEtsi.Size = new System.Drawing.Size(75, 23);
-            this.btnEtsi.TabIndex = 71;
+            this.btnEtsi.TabIndex = 1;
             this.btnEtsi.Text = "Etsi";
             this.btnEtsi.UseVisualStyleBackColor = true;
             this.btnEtsi.Click += new System.EventHandler(this.btnEtsi_Click);
@@ -364,7 +364,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.btnLisaa_varaus.Location = new System.Drawing.Point(423, 237);
             this.btnLisaa_varaus.Name = "btnLisaa_varaus";
             this.btnLisaa_varaus.Size = new System.Drawing.Size(75, 23);
-            this.btnLisaa_varaus.TabIndex = 68;
+            this.btnLisaa_varaus.TabIndex = 8;
             this.btnLisaa_varaus.Text = "Lisää";
             this.btnLisaa_varaus.UseVisualStyleBackColor = true;
             this.btnLisaa_varaus.Click += new System.EventHandler(this.btnLisaa_varaus_Click);
@@ -392,14 +392,14 @@ namespace Ohjelmistotuotanto_Projekti
             this.tbMokki_ID.Location = new System.Drawing.Point(42, 125);
             this.tbMokki_ID.Name = "tbMokki_ID";
             this.tbMokki_ID.Size = new System.Drawing.Size(193, 22);
-            this.tbMokki_ID.TabIndex = 65;
+            this.tbMokki_ID.TabIndex = 2;
             // 
             // tbAsiakas_ID
             // 
             this.tbAsiakas_ID.Location = new System.Drawing.Point(304, 125);
             this.tbAsiakas_ID.Name = "tbAsiakas_ID";
             this.tbAsiakas_ID.Size = new System.Drawing.Size(193, 22);
-            this.tbAsiakas_ID.TabIndex = 64;
+            this.tbAsiakas_ID.TabIndex = 3;
             // 
             // label2
             // 
@@ -415,7 +415,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.tbVaraus_ID.Location = new System.Drawing.Point(42, 57);
             this.tbVaraus_ID.Name = "tbVaraus_ID";
             this.tbVaraus_ID.Size = new System.Drawing.Size(193, 22);
-            this.tbVaraus_ID.TabIndex = 63;
+            this.tbVaraus_ID.TabIndex = 0;
             // 
             // dtpVarattu_pvm
             // 
@@ -424,14 +424,14 @@ namespace Ohjelmistotuotanto_Projekti
             this.dtpVarattu_pvm.Location = new System.Drawing.Point(42, 185);
             this.dtpVarattu_pvm.Name = "dtpVarattu_pvm";
             this.dtpVarattu_pvm.Size = new System.Drawing.Size(193, 22);
-            this.dtpVarattu_pvm.TabIndex = 66;
+            this.dtpVarattu_pvm.TabIndex = 4;
             // 
             // btnPoista_varaus
             // 
             this.btnPoista_varaus.Location = new System.Drawing.Point(42, 237);
             this.btnPoista_varaus.Name = "btnPoista_varaus";
             this.btnPoista_varaus.Size = new System.Drawing.Size(75, 23);
-            this.btnPoista_varaus.TabIndex = 69;
+            this.btnPoista_varaus.TabIndex = 6;
             this.btnPoista_varaus.Text = "Poista";
             this.btnPoista_varaus.UseVisualStyleBackColor = true;
             this.btnPoista_varaus.Click += new System.EventHandler(this.btnPoista_varaus_Click);
@@ -441,7 +441,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.btnPaivita_varaus.Location = new System.Drawing.Point(304, 237);
             this.btnPaivita_varaus.Name = "btnPaivita_varaus";
             this.btnPaivita_varaus.Size = new System.Drawing.Size(75, 23);
-            this.btnPaivita_varaus.TabIndex = 70;
+            this.btnPaivita_varaus.TabIndex = 7;
             this.btnPaivita_varaus.Text = "Päivitä";
             this.btnPaivita_varaus.UseVisualStyleBackColor = true;
             this.btnPaivita_varaus.Click += new System.EventHandler(this.btnPaivita_varaus_Click);
@@ -476,7 +476,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.nudLkm.Location = new System.Drawing.Point(40, 185);
             this.nudLkm.Name = "nudLkm";
             this.nudLkm.Size = new System.Drawing.Size(159, 22);
-            this.nudLkm.TabIndex = 71;
+            this.nudLkm.TabIndex = 2;
             // 
             // label15
             // 
@@ -493,7 +493,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.cbPalvelut.Location = new System.Drawing.Point(40, 64);
             this.cbPalvelut.Name = "cbPalvelut";
             this.cbPalvelut.Size = new System.Drawing.Size(159, 24);
-            this.cbPalvelut.TabIndex = 65;
+            this.cbPalvelut.TabIndex = 0;
             this.cbPalvelut.SelectedIndexChanged += new System.EventHandler(this.cbPalvelut_SelectedIndexChanged_1);
             // 
             // tbPalveluID
@@ -501,14 +501,14 @@ namespace Ohjelmistotuotanto_Projekti
             this.tbPalveluID.Location = new System.Drawing.Point(40, 125);
             this.tbPalveluID.Name = "tbPalveluID";
             this.tbPalveluID.Size = new System.Drawing.Size(159, 22);
-            this.tbPalveluID.TabIndex = 69;
+            this.tbPalveluID.TabIndex = 1;
             // 
             // btnLisaaVarauksenPalvelu
             // 
             this.btnLisaaVarauksenPalvelu.Location = new System.Drawing.Point(249, 183);
             this.btnLisaaVarauksenPalvelu.Name = "btnLisaaVarauksenPalvelu";
             this.btnLisaaVarauksenPalvelu.Size = new System.Drawing.Size(94, 23);
-            this.btnLisaaVarauksenPalvelu.TabIndex = 70;
+            this.btnLisaaVarauksenPalvelu.TabIndex = 3;
             this.btnLisaaVarauksenPalvelu.Text = "Lisää";
             this.btnLisaaVarauksenPalvelu.UseVisualStyleBackColor = true;
             this.btnLisaaVarauksenPalvelu.Click += new System.EventHandler(this.btnLisaaVarauksenPalvelu_Click);
@@ -546,17 +546,17 @@ namespace Ohjelmistotuotanto_Projekti
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(442, 43);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(182, 17);
+            this.label16.Size = new System.Drawing.Size(189, 17);
             this.label16.TabIndex = 86;
-            this.label16.Text = "Laske laskun kokonaishinta";
+            this.label16.Text = "Laske veroton kokonaishinta";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(748, 43);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(79, 17);
@@ -566,7 +566,7 @@ namespace Ohjelmistotuotanto_Projekti
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(40, 43);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(100, 17);
@@ -575,10 +575,10 @@ namespace Ohjelmistotuotanto_Projekti
             // 
             // btnLaske
             // 
-            this.btnLaske.Location = new System.Drawing.Point(445, 112);
+            this.btnLaske.Location = new System.Drawing.Point(445, 76);
             this.btnLaske.Name = "btnLaske";
             this.btnLaske.Size = new System.Drawing.Size(188, 23);
-            this.btnLaske.TabIndex = 75;
+            this.btnLaske.TabIndex = 1;
             this.btnLaske.Text = "Laske";
             this.btnLaske.UseVisualStyleBackColor = true;
             this.btnLaske.Click += new System.EventHandler(this.btnLaske_Click);
@@ -588,7 +588,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.rtbLasku.Location = new System.Drawing.Point(43, 63);
             this.rtbLasku.Name = "rtbLasku";
             this.rtbLasku.Size = new System.Drawing.Size(303, 142);
-            this.rtbLasku.TabIndex = 76;
+            this.rtbLasku.TabIndex = 0;
             this.rtbLasku.Text = "";
             // 
             // btnLisaaLasku
@@ -596,7 +596,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.btnLisaaLasku.Location = new System.Drawing.Point(927, 182);
             this.btnLisaaLasku.Name = "btnLisaaLasku";
             this.btnLisaaLasku.Size = new System.Drawing.Size(114, 23);
-            this.btnLisaaLasku.TabIndex = 83;
+            this.btnLisaaLasku.TabIndex = 5;
             this.btnLisaaLasku.Text = "Lisää";
             this.btnLisaaLasku.UseVisualStyleBackColor = true;
             this.btnLisaaLasku.Click += new System.EventHandler(this.btnLisaaLasku_Click);
@@ -606,14 +606,14 @@ namespace Ohjelmistotuotanto_Projekti
             this.tbLasku_ID.Location = new System.Drawing.Point(751, 113);
             this.tbLasku_ID.Name = "tbLasku_ID";
             this.tbLasku_ID.Size = new System.Drawing.Size(114, 22);
-            this.tbLasku_ID.TabIndex = 80;
+            this.tbLasku_ID.TabIndex = 2;
             // 
             // tbAlv
             // 
             this.tbAlv.Location = new System.Drawing.Point(751, 183);
             this.tbAlv.Name = "tbAlv";
             this.tbAlv.Size = new System.Drawing.Size(114, 22);
-            this.tbAlv.TabIndex = 82;
+            this.tbAlv.TabIndex = 4;
             // 
             // label20
             // 
@@ -638,7 +638,7 @@ namespace Ohjelmistotuotanto_Projekti
             this.tbSumma.Location = new System.Drawing.Point(927, 113);
             this.tbSumma.Name = "tbSumma";
             this.tbSumma.Size = new System.Drawing.Size(114, 22);
-            this.tbSumma.TabIndex = 81;
+            this.tbSumma.TabIndex = 3;
             // 
             // label23
             // 
@@ -663,7 +663,6 @@ namespace Ohjelmistotuotanto_Projekti
             this.MinimumSize = new System.Drawing.Size(1498, 895);
             this.Name = "frmVaraukset";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Varaukset";
             this.Load += new System.EventHandler(this.frmVaraukset_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();

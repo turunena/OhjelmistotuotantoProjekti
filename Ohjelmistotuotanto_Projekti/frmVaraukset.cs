@@ -1,29 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data;
 using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
-using System.Configuration;
-using System.Web.Configuration;
-using Microsoft.Build.Framework.XamlTypes;
-using System.IO;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
-//form ja funktiot
-//mökkien haku
-//asiakkaan haku
-//varausten hallinta
-//palvelut
 
 namespace Ohjelmistotuotanto_Projekti
 {
@@ -33,7 +13,7 @@ namespace Ohjelmistotuotanto_Projekti
         {
             InitializeComponent();
         }
-        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=Ruutti;Allow User Variables=True");
+        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=ruutti;Allow User Variables=True");
         MySqlCommand command;
 
         private void frmVaraukset_Load(object sender, EventArgs e)
@@ -63,7 +43,9 @@ namespace Ohjelmistotuotanto_Projekti
 
         public void populateDGV()
         {
-            string query = "SELECT * FROM varaus";
+            string query = "SELECT varaus_id AS VarausID, asiakas_id AS AsiakasID, mokki_mokki_id AS MokkiID, varattu_pvm AS Varauspaiva," +
+                " vahvistus_pvm AS Vahvistuspaiva, " +
+                    "varattu_alkupvm AS Saapumispaiva, varattu_loppupvm AS Lahtopaiva FROM varaus";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             adapter.Fill(table);
@@ -114,13 +96,14 @@ namespace Ohjelmistotuotanto_Projekti
             }
         }
 
-
-        //Mökit
-
-        //toimii
         //kun alue valitaan palveluihin tulee tieto mitä sillä alueella on
         private void cbAlue2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cbPalvelut.Text = " ";
+            cbPalvelut.Items.Clear();
+            tbPalveluID.Text = " ";
+
+
             //hakee palvelut combobox:iin tiedot
             MySqlDataReader mdr2;
             string select2 = "SELECT p.nimi FROM palvelu p JOIN alue a ON p.alue_id = a.alue_id WHERE a.nimi = @vali";
@@ -137,21 +120,18 @@ namespace Ohjelmistotuotanto_Projekti
             CloseConnection();
         }
 
-        //toimii
         //etsii vapaana olevat mökit paikan ja ajan perusteella
         private void btnEtsiMokit_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=ruutti");
-            using (command = new MySqlCommand("SELECT m.mokkinimi, m.mokki_id, m.alue_id, m.kuvaus, m.varustelu, m.hinta " +
+            using (command = new MySqlCommand("SELECT m.mokkinimi AS Nimi, m.mokki_id AS MokkiID, m.alue_id AS AlueID, " +
+                "m.kuvaus As Kuvaus, m.varustelu AS Varustelu, m.hinta AS Hinta " +
                 " FROM mokki m INNER JOIN alue a ON m.hinta > @Vhinta AND m.hinta < @Ehinta AND m.alue_id = a.alue_id AND a.nimi = @Alue" +
                 " WHERE NOT EXISTS" +
                 " (SELECT * FROM varaus v WHERE m.mokki_id = v.mokki_mokki_id AND" +
-                " v.varattu_alkupvm <= @Loppu AND v.varattu_loppupvm >= @Alku)", conn))
+                " v.varattu_alkupvm <= @Loppu AND v.varattu_loppupvm >= @Alku)", connection))
             {
                 using (MySqlDataAdapter adapter2 = new MySqlDataAdapter(command))
                 {
-
-                    
                     OpenConnection();
                     command.Parameters.AddWithValue("@Alue", cbAlue2.Text);
                     command.Parameters.AddWithValue("@Vhinta", tbVahintaan.Text);
@@ -159,43 +139,63 @@ namespace Ohjelmistotuotanto_Projekti
                     command.Parameters.AddWithValue("@Alku", dtpVarauksen_alkupvm.Text);
                     command.Parameters.AddWithValue("@Loppu", dtpVarauksen_loppupvm.Text);
 
-                    try
+                    string VahStr = tbVahintaan.Text.Trim();
+                    string EnStr = tbEnintaan.Text.Trim();//poistaa ylimääräiset
+                    int vah = 0;
+                    int en = 0;
+                    bool ok1 = int.TryParse(VahStr, out vah);
+                    bool ok2 = int.TryParse(EnStr, out en);
+                    tbVahintaan.Text = VahStr;
+                    tbEnintaan.Text = EnStr;
+
+                    if (string.IsNullOrEmpty(cbAlue2.Text))
                     {
-                        DataTable dt = new DataTable();
-                        adapter2.Fill(dt);
-                        dgvVapaat.DataSource = dt;
-                        CloseConnection();
+                        MessageBox.Show("Valitse alue");
                     }
-                    catch (Exception)
+                    else if (!ok1 || vah < 0)
                     {
-                        MessageBox.Show("Haku epäonnistui");
+                        MessageBox.Show("Mökin vähintään hinta puuttuu tai ei ole kokonaisluku");
                     }
-                    if (dgvVapaat.Rows.Count == 1)
+                    else if (!ok2 || en < 0)
                     {
-                        MessageBox.Show("Ei vapaita mökkejä valituilla ehdoilla " + "\n" + "paikassa " + cbAlue2.Text);
+                        MessageBox.Show("Mökin enintään hinta puuttuu tai ei ole kokonaisluku");
                     }
-                }              
+                    else
+                    {
+                        try
+                        {
+                            DataTable dt = new DataTable();
+                            adapter2.Fill(dt);
+                            dgvVapaat.DataSource = dt;
+                            CloseConnection();
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Haku epäonnistui");
+                        }
+                        if (dgvVapaat.Rows.Count == 1)
+                        {
+                            MessageBox.Show("Ei vapaita mökkejä valituilla ehdoilla " + "\n" + "paikassa " + cbAlue2.Text);
+                        }
+                    }
+
+
+                }
             }
         }
-        //toimii
+
         //vie mokki id:n varausten hallintaan
         private void dgvVapaat_MouseClick(object sender, MouseEventArgs e)
         {
             tbMokki_ID.Text = dgvVapaat.CurrentRow.Cells[1].Value.ToString();
         }
 
-        //asiakkaat
-
-        //toimii
         //vie asiakas id:n varausten hallintaan
         private void dgvAsiakasTiedot_MouseClick(object sender, MouseEventArgs e)
         {
             tbAsiakas_ID.Text = dgvAsiakasTiedot.CurrentRow.Cells[1].Value.ToString();
         }
 
-        //varausten hallinta
-
-        //toimii
         //klikkaamalla datagridview:in riviä tiedot siirtyvät tekstikenttiin
         private void dgvVaraukset_MouseClick(object sender, MouseEventArgs e)
         {
@@ -208,53 +208,55 @@ namespace Ohjelmistotuotanto_Projekti
             dtpVarauksen_loppupvm.Text = dgvVaraukset.CurrentRow.Cells[6].Value.ToString();
         }
 
-        //toimii
         //lisätään varaus
         private void btnLisaa_varaus_Click(object sender, EventArgs e)
         {
-                try
-                {
+            try
+            {
                 //lisätään varaus tietokantaan
-                    int varausID = int.Parse(tbVaraus_ID.Text);
-                    string insertQuery = "insert into varaus(varaus_id, asiakas_id, mokki_mokki_id, varattu_pvm, vahvistus_pvm, " +
-                        "varattu_alkupvm, varattu_loppupvm) values(" + varausID + ",'" + tbAsiakas_ID.Text + "','" + tbMokki_ID.Text + "','" +
-                        dtpVarattu_pvm.Text + "','" + dtpVahvistus_pvm.Text + "','" + dtpVarauksen_alkupvm.Text + "','" + dtpVarauksen_loppupvm.Text + "')";                   
-                    ExecuteMyQuery(insertQuery);
-                    populateDGV();
+                int varausID = int.Parse(tbVaraus_ID.Text);
+                int asiakasID = int.Parse(tbAsiakas_ID.Text);
+                int mokkiID = int.Parse(tbMokki_ID.Text);
+                string insertQuery = "insert into varaus(varaus_id, asiakas_id, mokki_mokki_id, varattu_pvm, vahvistus_pvm, " +
+                    "varattu_alkupvm, varattu_loppupvm) values(" + varausID + ",'" + asiakasID + "','" + mokkiID + "','" +
+                    dtpVarattu_pvm.Text + "','" + dtpVahvistus_pvm.Text + "','" + dtpVarauksen_alkupvm.Text + "','" + dtpVarauksen_loppupvm.Text + "')";
 
-                    //vie id:t richtextboxiin
-                    rtbLasku.Text = "Varaus ID: " + tbVaraus_ID.Text;
-                    rtbLasku.Text += Environment.NewLine + "Asiakas ID: " + tbAsiakas_ID.Text;
-                    rtbLasku.Text += Environment.NewLine + "Mökki ID: " + tbMokki_ID.Text;
-                    rtbLasku.Text += Environment.NewLine + " ";
 
-                    //haetaan mökin hinta, vierailupäivien määrä ja lasketaan yöpymisen hinta
-                    OpenConnection();
-                    MySqlDataReader mdr;
-                    string select = "SELECT datediff(varattu_loppupvm, varattu_alkupvm) AS erotus, datediff(varattu_loppupvm, varattu_alkupvm)*m.hinta AS kokosum," +
-                        " m.hinta FROM varaus INNER JOIN " +
-                        "mokki m ON mokki_mokki_id = m.mokki_id AND varaus_id = " + tbVaraus_ID.Text;               
-                    command = new MySqlCommand(select, connection);
-                    command.Prepare();
-                    mdr = command.ExecuteReader();
+                ExecuteMyQuery(insertQuery);
+                populateDGV();
+
+                //vie id:t richtextboxiin
+                rtbLasku.Text = "Varaus ID: " + tbVaraus_ID.Text;
+                rtbLasku.Text += Environment.NewLine + "Asiakas ID: " + tbAsiakas_ID.Text;
+                rtbLasku.Text += Environment.NewLine + "Mökki ID: " + tbMokki_ID.Text;
+                rtbLasku.Text += Environment.NewLine + " ";
+
+                //haetaan mökin hinta, vierailupäivien määrä ja lasketaan yöpymisen hinta
+                OpenConnection();
+                MySqlDataReader mdr;
+                string select = "SELECT datediff(varattu_loppupvm, varattu_alkupvm) AS erotus, datediff(varattu_loppupvm, varattu_alkupvm)*m.hinta AS kokosum," +
+                    " m.hinta FROM varaus INNER JOIN " +
+                    "mokki m ON mokki_mokki_id = m.mokki_id AND varaus_id = " + tbVaraus_ID.Text;
+                command = new MySqlCommand(select, connection);
+                command.Prepare();
+                mdr = command.ExecuteReader();
 
                 //vie tiedot richtextboxiin
-                    while (mdr.Read())
-                    {
-                        rtbLasku.Text += Environment.NewLine + "Mökki hinta: " + mdr["hinta"];
-                        rtbLasku.Text += Environment.NewLine + "Päivät: " + mdr["erotus"];
-                        rtbLasku.Text += Environment.NewLine + "Yöpymisen kokonaishinta: " + mdr["kokosum"];
-                        rtbLasku.Text += Environment.NewLine + " ";
-                    }
-                    CloseConnection();
-                }
-                catch (Exception)
+                while (mdr.Read())
                 {
-                    MessageBox.Show("Lisääminen epäonnistui");
+                    rtbLasku.Text += Environment.NewLine + "Mökki hinta: " + mdr["hinta"];
+                    rtbLasku.Text += Environment.NewLine + "Päivät: " + mdr["erotus"];
+                    rtbLasku.Text += Environment.NewLine + "Yöpymisen kokonaishinta: " + mdr["kokosum"];
+                    rtbLasku.Text += Environment.NewLine + " ";
                 }
+                CloseConnection();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lisääminen epäonnistui");
+            }
         }
 
-        //toimii
         //poistetaan valittu varaus
         private void btnPoista_varaus_Click(object sender, EventArgs e)
         {
@@ -271,48 +273,57 @@ namespace Ohjelmistotuotanto_Projekti
 
         }
 
-        //toimii
         //päivitetään valittu varaus
         private void btnPaivita_varaus_Click(object sender, EventArgs e)
         {
-            string updateQuery = "UPDATE varaus SET asiakas_id='" + tbAsiakas_ID.Text + "',mokki_mokki_id='" + tbMokki_ID.Text
+            try
+            {
+                string updateQuery = "UPDATE varaus SET asiakas_id='" + tbAsiakas_ID.Text + "',mokki_mokki_id='" + tbMokki_ID.Text
                 + "',varattu_pvm='" + dtpVarattu_pvm.Text + "',vahvistus_pvm='" + dtpVahvistus_pvm.Text + "',varattu_alkupvm='" + dtpVarauksen_alkupvm.Text
                 + "',varattu_loppupvm='" + dtpVarauksen_loppupvm.Text + "' WHERE varaus_id =" + int.Parse(tbVaraus_ID.Text);
-            ExecuteMyQuery(updateQuery);
-            populateDGV();
+                ExecuteMyQuery(updateQuery);
+                populateDGV();
+            }
+            catch
+            {
+                MessageBox.Show("Päivitys epäonnistui");
+            }
+            
         }
 
-        //toimii
         //etsitään tiedot varaus id:llä
         private void btnEtsi_Click(object sender, EventArgs e)
         {
-            MySqlDataReader mdr;
-            string select = "SELECT * FROM varaus WHERE varaus_id = " + tbVaraus_ID.Text;
-            command = new MySqlCommand(select, connection);
-            OpenConnection();
-            mdr = command.ExecuteReader();
-
-            if (mdr.Read())
+            try
             {
-                tbAsiakas_ID.Text = mdr.GetInt32("asiakas_id").ToString();
-                tbMokki_ID.Text = mdr.GetInt32("mokki_mokki_id").ToString();
-                dtpVarattu_pvm.Text = mdr.GetDateTime("varattu_pvm").ToString();
-                dtpVahvistus_pvm.Text = mdr.GetDateTime("vahvistus_pvm").ToString();
-                dtpVarauksen_alkupvm.Text = mdr.GetDateTime("varattu_alkupvm").ToString();
-                dtpVarauksen_loppupvm.Text = mdr.GetDateTime("varattu_loppupvm").ToString();
-            }
-            else
-            {
-                MessageBox.Show("Etsintä epäonnistui");
-            }
+                MySqlDataReader mdr;
+                string select = "SELECT * FROM varaus WHERE varaus_id = " + tbVaraus_ID.Text;
+                command = new MySqlCommand(select, connection);
+                OpenConnection();
+                mdr = command.ExecuteReader();
 
-            CloseConnection();
+                if (mdr.Read())
+                {
+                    tbAsiakas_ID.Text = mdr.GetInt32("asiakas_id").ToString();
+                    tbMokki_ID.Text = mdr.GetInt32("mokki_mokki_id").ToString();
+                    dtpVarattu_pvm.Text = mdr.GetDateTime("varattu_pvm").ToString();
+                    dtpVahvistus_pvm.Text = mdr.GetDateTime("vahvistus_pvm").ToString();
+                    dtpVarauksen_alkupvm.Text = mdr.GetDateTime("varattu_alkupvm").ToString();
+                    dtpVarauksen_loppupvm.Text = mdr.GetDateTime("varattu_loppupvm").ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Ei löydy varausta");
+                }
+
+                CloseConnection();
+            }
+            catch
+            {
+                MessageBox.Show("VarausID puuttuu tai ei ole kokonaisluku");
+            }
         }
 
-        //Palvelut
-
-
-        //toimii
         private void btnLisaaVarauksenPalvelu_Click(object sender, EventArgs e)
         {
             try
@@ -348,7 +359,6 @@ namespace Ohjelmistotuotanto_Projekti
             }
         }
 
-        //toimii
         //palvelu id:een haku textboxiin
         private void cbPalvelut_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -367,10 +377,10 @@ namespace Ohjelmistotuotanto_Projekti
             CloseConnection();
         }
 
-        //toimii
         //lasketaan laskun summa
         private void btnLaske_Click(object sender, EventArgs e)
         {
+            
             //haetaan palvelut ja lasketaan niiden hinnat
             OpenConnection();
             MySqlDataReader mdr2;
@@ -444,6 +454,5 @@ namespace Ohjelmistotuotanto_Projekti
             this.Close();
         }
 
-        
     }
 }

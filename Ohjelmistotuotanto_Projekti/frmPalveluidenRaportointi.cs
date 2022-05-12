@@ -17,7 +17,7 @@ namespace Ohjelmistotuotanto_Projekti
         {
             InitializeComponent();
         }
-        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=Ruutti;Allow User Variables=True");
+        MySqlConnection connection = new MySqlConnection("Server=localhost; Port=3307; Database=vn; Uid=root; Pwd=ruutti;Allow User Variables=True");
         MySqlCommand command;
 
         private void frmRaportointi_Load(object sender, EventArgs e)
@@ -67,12 +67,12 @@ namespace Ohjelmistotuotanto_Projekti
         //Etsii halutuilla vaihtoehdoilla
         private void btnEtsi_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=ruutti");
-            using (command = new MySqlCommand("SELECT p.nimi, p.palvelu_id, p.kuvaus, p.hinta, v.varaus_id, p.alue_id" +
+            using (command = new MySqlCommand("SELECT p.palvelu_id AS PalveluID, p.nimi AS Nimi, p.alue_id AS AlueID, v.varaus_id AS VarausID, " +
+                "p.kuvaus AS Kuvaus, p.hinta AS Hinta" +
                 " FROM varaus v INNER JOIN varauksen_palvelut vp" +
                 " ON v.varattu_alkupvm <= @Loppu AND v.varattu_loppupvm >= @Alku AND v.varaus_id = vp.varaus_id" +
                 " INNER JOIN palvelu p ON vp.palvelu_id = p.palvelu_id" +
-                " INNER JOIN alue a ON p.alue_id = a.alue_id AND a.nimi = @Vali", conn))
+                " INNER JOIN alue a ON p.alue_id = a.alue_id AND a.nimi = @Vali", connection))
             {
                 using (MySqlDataAdapter adapter2 = new MySqlDataAdapter(command))
                 {
@@ -112,8 +112,11 @@ namespace Ohjelmistotuotanto_Projekti
 
         private void btnNaytaKaikki_Click(object sender, EventArgs e)
         {
-            string query = "SELECT vp.varaus_id, vp.palvelu_id, vp.lkm, v.asiakas_id FROM varauksen_palvelut vp" +
-                " INNER JOIN varaus v ON vp.varaus_id = v.varaus_id";
+            string query = "SELECT p.palvelu_id AS PalveluID, p.nimi AS Nimi, p.alue_id AS AlueID, v.varaus_id AS VarausID, " +
+                "p.kuvaus AS Kuvaus, p.hinta AS Hinta" +
+                " FROM varauksen_palvelut vp" +
+                " INNER JOIN varaus v ON vp.varaus_id = v.varaus_id" +
+                " INNER JOIN  palvelu p ON vp.palvelu_id = p.palvelu_id";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             adapter.Fill(table);
@@ -122,13 +125,12 @@ namespace Ohjelmistotuotanto_Projekti
 
         private void btnEtsiMajoitus_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = new MySqlConnection("datasource=localhost;port=3307;Initial Catalog=vn;username=root;password=ruutti");
             using (command = new MySqlCommand("SELECT varaus_id AS VarausID, asiakas_id AS AsiakasID, mokki_mokki_id AS MokkiID," +
                 " varattu_pvm AS Varauspaiva, vahvistus_pvm AS Vahvistuspaiva, varattu_alkupvm AS Saapumispaiva," +
                 " varattu_loppupvm AS Lahtopaiva" +
                 " FROM varaus v INNER JOIN mokki m ON v.mokki_mokki_id = m.mokki_id AND" +
                 " v.varattu_alkupvm <= @Loppu AND v.varattu_loppupvm >= @Alku" +
-                " INNER JOIN alue a ON m.alue_id = a.alue_id AND a.nimi = @Vali", conn))
+                " INNER JOIN alue a ON m.alue_id = a.alue_id AND a.nimi = @Vali", connection))
             {
                 using (MySqlDataAdapter adapter2 = new MySqlDataAdapter(command))
                 {
