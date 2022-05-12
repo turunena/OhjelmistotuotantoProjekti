@@ -136,12 +136,6 @@
       <DependentUpon>frmPalvelut.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMajoitusRaportti.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMajoitusRaportti.Designer.cs">
-      <DependentUpon>frmMajoitusRaportti.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMokit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,9 +176,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLaskut.resx">
       <DependentUpon>frmLaskut.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMajoitusRaportti.resx">
-      <DependentUpon>frmMajoitusRaportti.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMokit.resx">
       <DependentUpon>frmMokit.cs</DependentUpon>
